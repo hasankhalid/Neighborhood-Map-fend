@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DHA Phase 8 NeighborHood Map</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel = "stylesheet" href = "style/style.css">
+    <meta name = "viewport" content = "width=device-width", initial-scale = 1>
+  </head>
+  <body>
+    <div class="pageTitle">
+      <h2>DHA Phase 8 NeighborHood Resturants Map</h2>
+      <input class = "search" placeholder="Type your search Query here." data-bind="value: query, valueUpdate: 'keyup'">
+    </div>
+    <div class = "a">
+      <div id = "AreaList">
+        <ul data-bind="template: {name:'location', foreach:filterSearch}"></ul>
+        <script type="text/html" id="location">
+          <li id ="infoContent">
+            <strong data-bind="text: name, click: $root.doStuff"></strong> –
+            <div class ="ratingDiv" data-bind="if: rating">
+              <strong data-bind="text: rating"></strong> –
+            </div>
+            <span data-bind="text: formatted_address"></span>
+          </li>
+        </script>
+        <span class="note">Note: Restaurants who do not have a rating displayed have had no rating submissions yet</span>
+      </div>
+      <div id="map"></div>
+  </div>
+    <div id="footer">Udacity front end nano-degree Project 5</div>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqjxLgrX6yt_Hz-0GHwk1uSHM0WBrpqsQ&v=3&callback=initMap" onerror = "exceptionHandle()">
+    </script>
+  </body>
+</html>
